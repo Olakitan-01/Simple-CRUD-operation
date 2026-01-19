@@ -1,4 +1,4 @@
-A full-stack backend application for managing inventory items with secure user authentication.
+A simple crud operation with secure user authentication.
 
 🚀 FeaturesUser Authentication: 
 
