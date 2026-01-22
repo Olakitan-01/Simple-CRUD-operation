@@ -20,6 +20,10 @@ const productSchema =  new mongoose.Schema({
     inStock: {
         type: Boolean,
         default: true
+    },
+    image: {
+        type: String,
+        required: true
     }
 },
 {timestamps: true}
