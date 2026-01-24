@@ -24,6 +24,10 @@ const productSchema =  new mongoose.Schema({
     image: {
         type: String,
         required: true
+    },
+    external_api: {
+        type: Object, 
+        default: {}
     }
 },
 {timestamps: true}

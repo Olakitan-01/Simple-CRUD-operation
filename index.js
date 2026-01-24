@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const Product = require('./models/product.model')
 const productRoutes = require('./routes/product.route')
 const authRoutes = require('./routes/auth.route')
+const Todo = require('./models/todo.model')
+const todoRoutes = require('./routes/todo.route')
 
 
 const app = express()
@@ -13,6 +15,7 @@ const app = express()
 app.use(express.json());
 app.use('/api', productRoutes);
 app.use('/auth', authRoutes);
+app.use('/todos', todoRoutes);
 
 
 app.get('/', (req, res) => {

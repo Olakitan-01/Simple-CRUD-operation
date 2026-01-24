@@ -1,15 +1,21 @@
 const multer = require('multer');
-const cloudinary = require('../config/cloudinary.config');
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
-const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-    params: {
-        folder: 'products',
-        allowed_formats: ['jpg', 'png', 'jpeg']
-    }
-});
+const storage = multer.memoryStorage();
 
-const upload = multer({ storage: storage });
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === 'image/jpeg' ||
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'image/jpg' ||
+    file.mimetype === 'image/gif' ||
+    file.mimetype === 'application/pdf'
+  ) {
+    cb(null, true);
+  } else {
+    cb(new Error('Only images and pdf are allowed'), false);
+  }
+};
+
+const upload = multer({ storage, fileFilter });
 
 module.exports = upload;
